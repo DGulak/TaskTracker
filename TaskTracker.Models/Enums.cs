@@ -1,4 +1,4 @@
-﻿namespace TaskTracker.DAL.Models
+﻿namespace TaskTracker.Models
 {
     public enum TaskStatus
     {

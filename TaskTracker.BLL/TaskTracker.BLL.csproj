@@ -7,7 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TaskTracker.DAL\TaskTracker.DAL.csproj">
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\TaskTracker.Models\TaskTracker.Models.csproj" />
   </ItemGroup>
 
 </Project>

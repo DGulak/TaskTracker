@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TaskTracker.DAL.Contracts;
-using TaskTracker.DAL.Models;
 
 namespace TaskTracker.DAL.Repositories
 {
@@ -14,7 +13,7 @@ namespace TaskTracker.DAL.Repositories
 
             _dbContext = dbContext;
         }
-        public IRepository<Project> Projects { get; }
+        public IRepository<Models.Project> Projects { get; }
 
         public IRepository<Models.Task> Tasks { get; }
 
