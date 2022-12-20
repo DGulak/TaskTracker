@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace TaskTracker.DAL.Contracts
 {
-    internal interface IRepository<TEntity> where TEntity : class
+    /// <summary>
+    /// Generic Repository interface
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    public interface IRepository<TEntity> where TEntity : class
     {
-        public TEntity Create(TEntity _object);
-        public void Delete(TEntity _object);
-        public void Update(TEntity _object);
+        public Task<TEntity> Create(TEntity entity);
+        public void Delete(TEntity entity);
+        public void Update(TEntity entity);
         public IEnumerable<TEntity> GetAll();
-        public TEntity GetById(int Id);
+        public TEntity GetById(int id);
     }
 }

@@ -3,10 +3,10 @@ using TaskTracker.DAL.Contracts;
 
 namespace TaskTracker.DAL.Repositories
 {
-    internal class MSSQLRepository<TEntity> : IRepository<TEntity> where TEntity : class
+    internal class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         DbContext _dbContext;
-        public MSSQLRepository(DbContext dbContext)
+        public Repository(DbContext dbContext)
         {
             _dbContext = dbContext;
         }

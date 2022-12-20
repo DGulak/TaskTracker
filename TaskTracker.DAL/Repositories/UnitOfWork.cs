@@ -4,13 +4,13 @@ using TaskTracker.DAL.Models;
 
 namespace TaskTracker.DAL.Repositories
 {
-    internal class MSSQLUnitOfWork : IUnitOfWork
+    internal class UnitOfWork : IUnitOfWork
     {
         private readonly DbContext _dbContext;
-        public MSSQLUnitOfWork(DbContext dbContext)
+        public UnitOfWork(DbContext dbContext)
         {
-            Projects = new MSSQLRepository<Models.Project>(dbContext);
-            Tasks = new MSSQLRepository<Models.Task>(dbContext);
+            Projects = new Repository<Models.Project>(dbContext);
+            Tasks = new Repository<Models.Task>(dbContext);
 
             _dbContext = dbContext;
         }
