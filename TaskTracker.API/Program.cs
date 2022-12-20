@@ -2,7 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using TaskTracker.BLL;
 using TaskTracker.BLL.Contracts;
 using TaskTracker.DAL.Contracts;
+using TaskTracker.DAL.Data;
 using TaskTracker.DAL.Repositories;
+using Models = TaskTracker.Models;
 
 internal class Program
 {

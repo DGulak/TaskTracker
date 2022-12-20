@@ -20,8 +20,12 @@
     <ProjectReference Include="..\TaskTracker.BLL\TaskTracker.BLL.csproj">
       <Private>True</Private>
     </ProjectReference>
-    <ProjectReference Include="..\TaskTracker.DAL\TaskTracker.DAL.csproj" />
-    <ProjectReference Include="..\TaskTracker.Models\TaskTracker.Models.csproj" />
+    <ProjectReference Include="..\TaskTracker.DAL\TaskTracker.DAL.csproj">
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\TaskTracker.Models\TaskTracker.Models.csproj">
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>
