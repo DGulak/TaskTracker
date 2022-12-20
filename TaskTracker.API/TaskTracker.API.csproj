@@ -14,8 +14,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TaskTracker.BLL\TaskTracker.BLL.csproj" />
-    <ProjectReference Include="..\TaskTracker.DAL\TaskTracker.DAL.csproj" />
+    <ProjectReference Include="..\TaskTracker.BLL\TaskTracker.BLL.csproj">
+      <Private>True</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\TaskTracker.DAL\TaskTracker.DAL.csproj">
+      <Private>True</Private>
+    </ProjectReference>
   </ItemGroup>
 
 </Project>

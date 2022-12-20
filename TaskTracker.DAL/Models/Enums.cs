@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TaskTracker.DAL.Models
+﻿namespace TaskTracker.DAL.Models
 {
-    internal class Enums
+    public enum TaskStatus
     {
+        NotStarted,
+        Active,
+        Completed
+    }
 
+    public enum ProjectStatus
+    {
+        ToDo,
+        InProgress,
+        Done
     }
 }

@@ -1,5 +1,4 @@
-﻿
-namespace TaskTracker.DAL.Contracts
+﻿namespace TaskTracker.DAL.Contracts
 {
     internal interface IUnitOfWork : IDisposable
     {

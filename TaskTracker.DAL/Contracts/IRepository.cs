@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace TaskTracker.DAL.Contracts
 {
-    internal interface IRepository<T> where T : class
+    internal interface IRepository<TEntity> where TEntity : class
     {
-        public T Create(T _object);
-        public void Delete(T _object);
-        public void Update(T _object);
-        public IEnumerable<T> GetAll();
-        public T GetById(int Id);
+        public TEntity Create(TEntity _object);
+        public void Delete(TEntity _object);
+        public void Update(TEntity _object);
+        public IEnumerable<TEntity> GetAll();
+        public TEntity GetById(int Id);
     }
 }
