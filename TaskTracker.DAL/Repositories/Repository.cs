@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TaskTracker.DAL.Contracts;
+using TaskTracker.Infrastructure.Entities;
 
 namespace TaskTracker.DAL.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
         DbContext _dbContext;
         public Repository(DbContext dbContext)
@@ -15,7 +16,7 @@ namespace TaskTracker.DAL.Repositories
         {
             if (entity != null)
             {
-                var obj = _dbContext.Add<TEntity>(entity);
+                var obj = _dbContext.Add(entity);
                 await _dbContext.SaveChangesAsync();
                 return obj.Entity;
             }
@@ -30,7 +31,7 @@ namespace TaskTracker.DAL.Repositories
             _dbContext.Set<TEntity>().Remove(entity);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public IQueryable<TEntity> GetAll()
         {
             return _dbContext.Set<TEntity>();
         }

@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TaskTracker.Infrastructure.Entities;
 
 namespace TaskTracker.DAL.Data
 {
-    internal class TaskTrackerContext : DbContext
+    public class TaskTrackerContext : DbContext
     {
         public TaskTrackerContext(DbContextOptions<TaskTrackerContext> options)
         : base(options)
@@ -10,7 +11,7 @@ namespace TaskTracker.DAL.Data
             Database.Migrate();
         }
 
-        public DbSet<Models.Task> Tasks { get; set; }
-        public DbSet<Models.Project> Projects { get; set; }
+        public DbSet<Infrastructure.Entities.Task> Tasks { get; set; }
+        public DbSet<Project> Projects { get; set; }
     }
 }

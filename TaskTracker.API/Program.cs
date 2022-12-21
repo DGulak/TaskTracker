@@ -4,7 +4,8 @@ using TaskTracker.BLL.Contracts;
 using TaskTracker.DAL.Contracts;
 using TaskTracker.DAL.Data;
 using TaskTracker.DAL.Repositories;
-using Models = TaskTracker.Models;
+using TaskTracker.Infrastructure.Entities;
+using Infrastructure = TaskTracker.Infrastructure;
 
 internal class Program
 {
@@ -13,8 +14,8 @@ internal class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Register DbContext and Provide Connection String
-        var blogConnectionString = builder.Configuration.GetConnectionString("TaskTrackerConnectionString");
-        builder.Services.AddDbContext<TaskTrackerContext>(options => options.UseSqlServer(blogConnectionString));
+        var taskTrackerConnString = builder.Configuration.GetConnectionString("TaskTrackerConnectionString");
+        builder.Services.AddDbContext<TaskTrackerContext>(options => options.UseSqlServer(taskTrackerConnString, b => b.MigrationsAssembly("TaskTracker.DAL")));
 
         // AutoMapper Configuration
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
@@ -24,8 +25,8 @@ internal class Program
         builder.Services.AddScoped<ITaskLogic, TaskLogic>();
 
         // DI Configurations - Data Access Layer
-        builder.Services.AddScoped<IRepository<Models.Project>, Repository<Models.Project>>();
-        builder.Services.AddScoped<IRepository<Models.Task>, Repository<Models.Task>>();
+        builder.Services.AddScoped<IUnitOfWork<Project>, UnitOfWork<Project>>();
+        builder.Services.AddScoped<IUnitOfWork<Infrastructure.Entities.Task>, UnitOfWork<Infrastructure.Entities.Task>>();
 
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

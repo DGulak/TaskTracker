@@ -1,30 +1,30 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TaskTracker.DAL.Contracts;
+using TaskTracker.DAL.Data;
+using TaskTracker.Infrastructure.Entities;
 
 namespace TaskTracker.DAL.Repositories
 {
-    internal class UnitOfWork : IUnitOfWork
+    public class UnitOfWork<TEntity> : IUnitOfWork<TEntity> where TEntity : BaseEntity
     {
         private readonly DbContext _dbContext;
-        public UnitOfWork(DbContext dbContext)
+        public UnitOfWork(TaskTrackerContext dbContext)
         {
-            Projects = new Repository<Models.Project>(dbContext);
-            Tasks = new Repository<Models.Task>(dbContext);
+            Repository = new Repository<TEntity>(dbContext);
 
             _dbContext = dbContext;
         }
-        public IRepository<Models.Project> Projects { get; }
 
-        public IRepository<Models.Task> Tasks { get; }
+        public IRepository<TEntity> Repository { get; }
 
         public void Dispose()
         {
-            _dbContext.Dispose();
+            _dbContext.SaveChanges();
         }
 
-        public Task<int> SaveChangesAsync()
+        public int SaveChanges()
         {
-            return _dbContext.SaveChangesAsync();
+            return _dbContext.SaveChanges();
         }
     }
 }

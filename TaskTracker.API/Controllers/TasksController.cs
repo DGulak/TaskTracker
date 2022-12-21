@@ -26,7 +26,7 @@ namespace TaskTracker.API.Controllers
         public async Task<ActionResult<IEnumerable<TaskDTO>>> GetAll()
         {
             var tasks = _taskLogic.GetAll();
-            return Ok(_mapper.Map<IEnumerable<Models.Task>>(tasks));
+            return Ok(_mapper.Map<IEnumerable<Infrastructure.Entities.Task>>(tasks));
         }
 
         [HttpGet("{id}")]
@@ -40,7 +40,7 @@ namespace TaskTracker.API.Controllers
                 return NotFound();
             }
 
-            return Ok(_mapper.Map<Models.Task>(task));
+            return Ok(_mapper.Map<Infrastructure.Entities.Task>(task));
         }
 
         [HttpPut("{id}")]
@@ -53,7 +53,7 @@ namespace TaskTracker.API.Controllers
             }
 
             taskDTO.Id = id;
-            var post = _mapper.Map<Models.Task>(taskDTO);
+            var post = _mapper.Map<Infrastructure.Entities.Task>(taskDTO);
             _taskLogic.Update(post);
             return Ok();
         }
@@ -67,7 +67,7 @@ namespace TaskTracker.API.Controllers
                 return BadRequest();
             }
 
-            var task = _mapper.Map<Models.Task>(taskDTO);
+            var task = _mapper.Map<Infrastructure.Entities.Task>(taskDTO);
             await _taskLogic.CreateAsync(task);
             return Ok();
         }

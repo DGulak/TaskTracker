@@ -1,6 +1,8 @@
-﻿namespace TaskTracker.BLL.Contracts
+﻿using TaskTracker.Infrastructure.Entities;
+
+namespace TaskTracker.BLL.Contracts
 {
-    public interface IBaseLogic<TEntity> where TEntity : Models.BaseEntity
+    public interface IBaseLogic<TEntity> : IDisposable where TEntity : BaseEntity
     {
         IEnumerable<TEntity> GetAll();
         TEntity GetById(int id);

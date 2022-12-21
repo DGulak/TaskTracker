@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker.BLL", "TaskTrac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker.DAL", "TaskTracker.DAL\TaskTracker.DAL.csproj", "{8237FF3C-9233-4781-9D14-EC3083881D2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.Models", "TaskTracker.Models\TaskTracker.Models.csproj", "{00E406FE-407D-4A1B-83CF-B245F290DD6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker.Infrastructures", "TaskTracker.Models\TaskTracker.Infrastructures.csproj", "{00E406FE-407D-4A1B-83CF-B245F290DD6D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

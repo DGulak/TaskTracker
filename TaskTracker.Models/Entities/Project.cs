@@ -1,4 +1,6 @@
-﻿namespace TaskTracker.Models
+﻿using TaskTracker.Infrastructure.Enums;
+
+namespace TaskTracker.Infrastructure.Entities
 {
     public class Project : BaseEntity
     {

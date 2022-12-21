@@ -1,4 +1,4 @@
-﻿namespace TaskTracker.Models
+﻿namespace TaskTracker.Infrastructure.Enums
 {
     public enum TaskStatus
     {

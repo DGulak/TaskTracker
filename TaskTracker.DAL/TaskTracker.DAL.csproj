@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TaskTracker.Models\TaskTracker.Models.csproj">
+    <ProjectReference Include="..\TaskTracker.Models\TaskTracker.Infrastructures.csproj">
       <Private>True</Private>
     </ProjectReference>
   </ItemGroup>

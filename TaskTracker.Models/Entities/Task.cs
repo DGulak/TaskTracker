@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using TaskStatus = TaskTracker.Infrastructure.Enums.TaskStatus;
 
-namespace TaskTracker.Models
+namespace TaskTracker.Infrastructure.Entities
 {
     public class Task : BaseEntity
     {

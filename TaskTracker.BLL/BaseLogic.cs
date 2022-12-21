@@ -6,47 +6,51 @@ using System.Text;
 using System.Threading.Tasks;
 using TaskTracker.BLL.Contracts;
 using TaskTracker.DAL.Contracts;
-using TaskTracker.Models;
+using TaskTracker.Infrastructure.Entities;
 
 namespace TaskTracker.BLL
 {
-    public class BaseLogic<TRepository, TEntity> : IBaseLogic<TEntity> where TRepository 
-        : IRepository<TEntity> where TEntity : BaseEntity
+    public class BaseLogic<TUnitOfWork, TEntity> : IBaseLogic<TEntity> where TUnitOfWork 
+        : IUnitOfWork<TEntity> where TEntity : BaseEntity
     {
-        protected readonly IRepository<TEntity> _repository;
+        protected readonly IUnitOfWork<TEntity> _unitOfWork;
         protected readonly ILogger _logger;
 
-        public BaseLogic(TRepository repository, ILogger logger)
+        public BaseLogic(TUnitOfWork unitOfWork, ILogger logger)
         {
-            _repository = repository;
+            _unitOfWork = unitOfWork;
             _logger = logger;
         }
 
         public Task<TEntity> CreateAsync(TEntity entity)
         {
-            return _repository.Create(entity);
+                return _unitOfWork.Repository.Create(entity);
         }
 
         public void Delete(int id)
         {
-            var entity = _repository.GetById(id);
-            _repository.Delete(entity);
+                var entity = _unitOfWork.Repository.GetById(id);
+                _unitOfWork.Repository.Delete(entity);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
-            return _repository.GetAll();
+                return _unitOfWork.Repository.GetAll();
         }
 
         public TEntity GetById(int id)
         {
-            return _repository.GetById(id);
+               return _unitOfWork.Repository.GetById(id); 
         }
 
         public TEntity Update(TEntity entity)
         {
-            _repository.Update(entity);
+            _unitOfWork.Repository.Update(entity);
+            _unitOfWork.SaveChanges();
             return entity;
+        }
+        public void Dispose()
+        {
         }
     }
 }
