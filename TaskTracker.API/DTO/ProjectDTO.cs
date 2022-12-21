@@ -1,4 +1,7 @@
-﻿namespace TaskTracker.API.DTO
+﻿using TaskTracker.Infrastructure.Entities;
+using TaskTracker.Infrastructure.Enums;
+
+namespace TaskTracker.API.DTO
 {
     public class ProjectDTO
     {
@@ -10,7 +13,7 @@
 
         public DateTime CompletionDate { get; set; }
 
-        public int Status { get; set; }
+        public ProjectStatus  Status { get; set; }
 
         public int Priority { get; set; }
     }

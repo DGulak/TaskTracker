@@ -27,9 +27,6 @@
     <ProjectReference Include="..\TaskTracker.DAL\TaskTracker.DAL.csproj">
       <Private>True</Private>
     </ProjectReference>
-    <ProjectReference Include="..\TaskTracker.Models\TaskTracker.Infrastructures.csproj">
-      <Private>True</Private>
-    </ProjectReference>
   </ItemGroup>
 
 </Project>
