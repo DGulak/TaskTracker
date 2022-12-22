@@ -5,6 +5,7 @@ using TaskTracker.API.DTO;
 using TaskTracker.BLL;
 using TaskTracker.BLL.Contracts;
 using TaskTracker.Infrastructure.Entities;
+using TaskTracker.Infrastructure.Enums;
 using TaskTracker.Infrastructure.Filters;
 
 namespace TaskTracker.API.Controllers
@@ -33,6 +34,13 @@ namespace TaskTracker.API.Controllers
         public async Task<ActionResult<IEnumerable<ProjectDTO>>> GetAll([FromQuery] GetAllProjectsQuery query)
         {
             var filter = _mapper.Map<GetAllProjectsFilter>(query);
+
+            if(filter?.Priority < 0)
+            {
+                string message = "Project priority incorrect";
+                _logger.LogWarning(message);
+                return BadRequest(message);
+            }
 
             var projects = _pojectLogic.GetAll(filter);
 
@@ -106,11 +114,29 @@ namespace TaskTracker.API.Controllers
         {
             if (projectDTO == null)
             {
-                _logger.LogWarning($"Project was null");
-                return BadRequest();
+                string message = "Project was null";
+                _logger.LogWarning(message);
+                return BadRequest(message);
+            }
+
+            if(projectDTO.ProjectStatus != ProjectStatus.ToDo &&
+                projectDTO.ProjectStatus != ProjectStatus.InProgress &&
+                projectDTO.ProjectStatus != ProjectStatus.Done)
+            {
+                string message = "Project status incorrect";
+                _logger.LogWarning(message);
+                return BadRequest(message);
             }
 
             var project = _mapper.Map<Project>(projectDTO);
+
+            if(project.ProjectStatus == 0 || string.IsNullOrEmpty(project.Name))
+            {
+                string message = "Project status or project name is incorrect";
+                _logger.LogWarning(message);
+                return BadRequest(message);
+            }
+
             await _pojectLogic.CreateAsync(project);
             return Ok();
         }

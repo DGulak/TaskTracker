@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TaskTracker.Infrastructure.Enums;
 
 namespace TaskTracker.API.Contracts.Requests.Queries
 {
@@ -11,6 +12,8 @@ namespace TaskTracker.API.Contracts.Requests.Queries
         [FromQuery(Name = "name")]
         public string? Name { get; set; }
         [FromQuery(Name = "priority")]
-        public int? Priority { get; set; }
+        public int? Priority { get; set; } = -1;
+        [FromQuery(Name = "projectStatus")] 
+        public ProjectStatus ProjectStatus { get; set; } = ProjectStatus.ToDo | ProjectStatus.InProgress | ProjectStatus.Done;
     }
 }

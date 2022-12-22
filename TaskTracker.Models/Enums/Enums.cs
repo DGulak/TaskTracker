@@ -1,16 +1,17 @@
 ﻿namespace TaskTracker.Infrastructure.Enums
 {
+    [Flags]
     public enum TaskStatus
     {
-        NotStarted,
-        Active,
-        Completed
+        NotStarted = 1,
+        Active = 2,
+        Completed = 4
     }
-
+    [Flags]
     public enum ProjectStatus
     {
-        ToDo,
-        InProgress,
-        Done
+        ToDo = 1,
+        InProgress = 2,
+        Done = 4
     }
 }

@@ -1,4 +1,5 @@
-﻿using TaskTracker.Infrastructure.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+using TaskTracker.Infrastructure.Entities;
 using TaskTracker.Infrastructure.Enums;
 
 namespace TaskTracker.API.DTO
@@ -7,13 +8,15 @@ namespace TaskTracker.API.DTO
     {
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         public DateTime StartDate { get; set; }
 
         public DateTime CompletionDate { get; set; }
 
-        public ProjectStatus  Status { get; set; }
+        [Required]
+        public ProjectStatus ProjectStatus { get; set; }
 
         public int Priority { get; set; }
     }

@@ -15,7 +15,8 @@ internal class Program
 
         // Register DbContext and Provide Connection String
         var taskTrackerConnString = builder.Configuration.GetConnectionString("TaskTrackerConnectionString");
-        builder.Services.AddDbContext<TaskTrackerContext>(options => options.UseSqlServer(taskTrackerConnString, b => b.MigrationsAssembly("TaskTracker.DAL")));
+        builder.Services.AddDbContext<TaskTrackerContext>(options => 
+            options.UseSqlServer(taskTrackerConnString, b => b.MigrationsAssembly("TaskTracker.DAL")));
 
         // AutoMapper Configuration
         builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
