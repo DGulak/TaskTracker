@@ -2,12 +2,13 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["TaskTracker.API/TaskTracker.API.csproj", "TaskTracker.API/"]
+COPY ["TaskTracker.BLL/TaskTracker.BLL.csproj", "TaskTracker.BLL/"]
+COPY ["TaskTracker.Models/TaskTracker.Infrastructures.csproj", "TaskTracker.Models/"]
+COPY ["TaskTracker.DAL/TaskTracker.DAL.csproj", "TaskTracker.DAL/"]
 RUN dotnet restore "TaskTracker.API/TaskTracker.API.csproj"
 COPY . .
 WORKDIR "/src/TaskTracker.API"

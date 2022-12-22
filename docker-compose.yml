@@ -1,0 +1,24 @@
+﻿version: '2.12'
+services: 
+    mssql-container:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        container_name: mssql-container
+        environment: 
+            ACCEPT_EULA: "Y"
+            SA_PASSWORD: "StrongPassword1"
+            MSSQL_PID: Express
+        ports: 
+            - "1433:1433"
+    tasktrackerapi:
+        build: .
+        container_name: tasktracker-container
+        depends_on: 
+            - mssql-container
+        environment: 
+            ASPNETCORE_ENVIRONMENT: Docker
+            ASPNETCORE_URLS: "http://+"
+            ASPNETCORE_HTTP_PORT: "80"
+            ConnectionString: "Data Source=mssql-container,1433;User ID=sa;Password=StrongPassword1;TrustServerCertificate=True"
+        ports: 
+            - "8000:80"
+            - "8001:443"

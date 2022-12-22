@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TaskTracker.DAL.Contracts;
 using TaskTracker.DAL.Data;
-using TaskTracker.Infrastructure.Entities;
+using TaskTracker.Infrastructures.Contracts;
+using TaskTracker.Infrastructures.Entities;
 
 namespace TaskTracker.DAL.Repositories
 {
@@ -19,7 +19,6 @@ namespace TaskTracker.DAL.Repositories
 
         public void Dispose()
         {
-            _dbContext.SaveChanges();
         }
 
         public int SaveChanges()

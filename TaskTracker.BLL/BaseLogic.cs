@@ -1,16 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TaskTracker.BLL.Contracts;
-using TaskTracker.DAL.Contracts;
-using TaskTracker.Infrastructure.Entities;
+using TaskTracker.Infrastructures.Contracts;
+using TaskTracker.Infrastructures.Entities;
 
 namespace TaskTracker.BLL
 {
-    public class BaseLogic<TUnitOfWork, TEntity> : IBaseLogic<TEntity> where TUnitOfWork 
+    public class BaseLogic<TUnitOfWork, TEntity> : IBaseLogic<TEntity> where TUnitOfWork
         : IUnitOfWork<TEntity> where TEntity : BaseEntity
     {
         protected readonly IUnitOfWork<TEntity> _unitOfWork;
@@ -22,25 +17,28 @@ namespace TaskTracker.BLL
             _logger = logger;
         }
 
-        public Task<TEntity> CreateAsync(TEntity entity)
+        public TEntity Create(TEntity entity)
         {
-                return _unitOfWork.Repository.Create(entity);
+            var result = _unitOfWork.Repository.Create(entity);
+            _unitOfWork.SaveChanges();
+            return result;
         }
 
         public void Delete(int id)
         {
-                var entity = _unitOfWork.Repository.GetById(id);
-                _unitOfWork.Repository.Delete(entity);
+            var entity = _unitOfWork.Repository.GetById(id);
+            _unitOfWork.Repository.Delete(entity);
+            _unitOfWork.SaveChanges();
         }
 
         public virtual IEnumerable<TEntity> GetAll()
         {
-                return _unitOfWork.Repository.GetAll();
+            return _unitOfWork.Repository.GetAll();
         }
 
         public TEntity GetById(int id)
         {
-               return _unitOfWork.Repository.GetById(id); 
+            return _unitOfWork.Repository.GetById(id);
         }
 
         public TEntity Update(TEntity entity)

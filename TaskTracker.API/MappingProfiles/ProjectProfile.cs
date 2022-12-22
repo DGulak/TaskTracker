@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using TaskTracker.API.DTO;
-using TaskTracker.Infrastructure.Entities;
+using TaskTracker.Infrastructures.Entities;
 
 namespace TaskTracker.API.MappingProfiles
 {

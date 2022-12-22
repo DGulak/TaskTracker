@@ -2,11 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskTracker.API.Contracts.Requests.Queries;
 using TaskTracker.API.DTO;
-using TaskTracker.BLL;
 using TaskTracker.BLL.Contracts;
-using TaskTracker.Infrastructure.Entities;
-using TaskTracker.Infrastructure.Enums;
-using TaskTracker.Infrastructure.Filters;
+using TaskTracker.Infrastructures.Entities;
+using TaskTracker.Infrastructures.Enums;
+using TaskTracker.Infrastructures.Filters;
 
 namespace TaskTracker.API.Controllers
 {
@@ -31,11 +30,11 @@ namespace TaskTracker.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProjectDTO>>> GetAll([FromQuery] GetAllProjectsQuery query)
+        public async Task<ActionResult<IEnumerable<ProjectDTO>>> GetAll([FromQuery] GetAllProjectsQuery? query)
         {
             var filter = _mapper.Map<GetAllProjectsFilter>(query);
 
-            if(filter?.Priority < 0)
+            if (filter?.Priority < -1)
             {
                 string message = "Project priority incorrect";
                 _logger.LogWarning(message);
@@ -64,22 +63,22 @@ namespace TaskTracker.API.Controllers
         [HttpGet("{id}/Tasks")]
         public async Task<ActionResult<IEnumerable<TaskDTO>>> GetTasks(int id)
         {
-            if(id <= 0)
+            if (id <= 0)
             {
                 _logger.LogWarning($"Project id <= 0");
                 return BadRequest();
             }
             var tasks = _taskLogic.Where(t => t.ProjectId == id);
 
-            if(tasks is null)
+            if (tasks is null)
             {
                 _logger.LogWarning($"Tasks not found.");
                 return NotFound();
             }
 
-            return Ok(_mapper.Map<IEnumerable<TaskDTO>> (tasks));
+            return Ok(_mapper.Map<IEnumerable<TaskDTO>>(tasks));
         }
-   
+
         [HttpPut("{id}")]
         public async Task<ActionResult> Update([FromRoute] int id, ProjectDTO projectDTO)
         {
@@ -119,7 +118,7 @@ namespace TaskTracker.API.Controllers
                 return BadRequest(message);
             }
 
-            if(projectDTO.ProjectStatus != ProjectStatus.ToDo &&
+            if (projectDTO.ProjectStatus != ProjectStatus.ToDo &&
                 projectDTO.ProjectStatus != ProjectStatus.InProgress &&
                 projectDTO.ProjectStatus != ProjectStatus.Done)
             {
@@ -130,14 +129,14 @@ namespace TaskTracker.API.Controllers
 
             var project = _mapper.Map<Project>(projectDTO);
 
-            if(project.ProjectStatus == 0 || string.IsNullOrEmpty(project.Name))
+            if (project.ProjectStatus == 0 || string.IsNullOrEmpty(project.Name))
             {
                 string message = "Project status or project name is incorrect";
                 _logger.LogWarning(message);
                 return BadRequest(message);
             }
 
-            await _pojectLogic.CreateAsync(project);
+            _pojectLogic.Create(project);
             return Ok();
         }
 

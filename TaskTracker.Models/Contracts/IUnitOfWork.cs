@@ -1,6 +1,6 @@
-﻿using TaskTracker.Infrastructure.Entities;
+﻿using TaskTracker.Infrastructures.Entities;
 
-namespace TaskTracker.DAL.Contracts
+namespace TaskTracker.Infrastructures.Contracts
 {
     public interface IUnitOfWork<TEntity> : IDisposable where TEntity : BaseEntity
     {

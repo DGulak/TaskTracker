@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TaskTracker.Infrastructure.Entities;
-using TaskTracker.Infrastructure.Enums;
+using TaskTracker.Infrastructures.Enums;
 
 namespace TaskTracker.API.DTO
 {

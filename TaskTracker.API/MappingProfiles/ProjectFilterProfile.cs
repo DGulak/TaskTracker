@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using TaskTracker.API.Contracts.Requests.Queries;
-using TaskTracker.Infrastructure.Filters;
+using TaskTracker.Infrastructures.Filters;
 
 namespace TaskTracker.API.MappingProfiles
 {

@@ -1,5 +1,4 @@
-﻿
-namespace TaskTracker.DAL.Contracts
+﻿namespace TaskTracker.Infrastructures.Contracts
 {
     /// <summary>
     /// Generic Repository interface
@@ -7,7 +6,7 @@ namespace TaskTracker.DAL.Contracts
     /// <typeparam name="TEntity"></typeparam>
     public interface IRepository<TEntity> where TEntity : class
     {
-        public Task<TEntity> Create(TEntity entity);
+        public TEntity Create(TEntity entity);
         public void Delete(TEntity entity);
         public void Update(TEntity entity);
         public IQueryable<TEntity> GetAll();

@@ -1,4 +1,4 @@
-﻿using TaskTracker.Infrastructure.Entities;
+﻿using TaskTracker.Infrastructures.Entities;
 
 namespace TaskTracker.BLL.Contracts
 {
@@ -6,7 +6,7 @@ namespace TaskTracker.BLL.Contracts
     {
         IEnumerable<TEntity> GetAll();
         TEntity GetById(int id);
-        Task<TEntity> CreateAsync(TEntity entity);
+        TEntity Create(TEntity entity);
         TEntity Update(TEntity entity);
         void Delete(int id);
     }

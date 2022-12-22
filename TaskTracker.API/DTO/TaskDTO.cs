@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TaskStatus = TaskTracker.Infrastructure.Enums.TaskStatus;
+using TaskStatus = TaskTracker.Infrastructures.Enums.TaskStatus;
 
 namespace TaskTracker.API.DTO
 {

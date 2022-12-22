@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TaskTracker.DAL.Contracts;
-using TaskTracker.Infrastructure.Entities;
+using TaskTracker.Infrastructures.Contracts;
+using TaskTracker.Infrastructures.Entities;
 
 namespace TaskTracker.DAL.Repositories
 {
@@ -12,12 +12,12 @@ namespace TaskTracker.DAL.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<TEntity> Create(TEntity entity)
+        public TEntity Create(TEntity entity)
         {
             if (entity != null)
             {
                 var obj = _dbContext.Add(entity);
-                await _dbContext.SaveChangesAsync();
+                _dbContext.SaveChanges();
                 return obj.Entity;
             }
             else

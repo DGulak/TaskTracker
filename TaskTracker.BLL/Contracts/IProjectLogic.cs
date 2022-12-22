@@ -1,7 +1,7 @@
 ﻿
 using System.Linq.Expressions;
-using TaskTracker.Infrastructure.Entities;
-using TaskTracker.Infrastructure.Filters;
+using TaskTracker.Infrastructures.Entities;
+using TaskTracker.Infrastructures.Filters;
 
 namespace TaskTracker.BLL.Contracts
 {

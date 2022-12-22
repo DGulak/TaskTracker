@@ -1,6 +1,6 @@
-﻿using TaskTracker.Infrastructure.Enums;
+﻿using TaskTracker.Infrastructures.Enums;
 
-namespace TaskTracker.Infrastructure.Entities
+namespace TaskTracker.Infrastructures.Entities
 {
     public class Project : BaseEntity
     {

@@ -1,15 +1,15 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.Linq.Expressions;
 using TaskTracker.BLL.Contracts;
-using TaskTracker.DAL.Contracts;
+using TaskTracker.Infrastructures.Contracts;
 
 namespace TaskTracker.BLL
 {
-    public class TaskLogic : BaseLogic<IUnitOfWork<Infrastructure.Entities.Task>, Infrastructure.Entities.Task>, ITaskLogic
+    public class TaskLogic : BaseLogic<IUnitOfWork<Infrastructures.Entities.Task>, Infrastructures.Entities.Task>, ITaskLogic
     {
         public TaskLogic(
-            IUnitOfWork<Infrastructure.Entities.Task> unitOfWork,
-            ILogger<TaskLogic> logger) 
+            IUnitOfWork<Infrastructures.Entities.Task> unitOfWork,
+            ILogger<TaskLogic> logger)
             : base(unitOfWork, logger)
         {
 
@@ -18,11 +18,11 @@ namespace TaskTracker.BLL
         public void ReassignTask(int newProjectId, int taskId)
         {
             var task = _unitOfWork.Repository.GetById(taskId);
-            task.ProjectId= newProjectId;
+            task.ProjectId = newProjectId;
             _unitOfWork.Repository.Update(task);
         }
 
-        public IEnumerable<Infrastructure.Entities.Task> Where(Expression<Func<Infrastructure.Entities.Task, bool>> predicate)
+        public IEnumerable<Infrastructures.Entities.Task> Where(Expression<Func<Infrastructures.Entities.Task, bool>> predicate)
         {
             return _unitOfWork.Repository.GetAll().Where(predicate);
         }

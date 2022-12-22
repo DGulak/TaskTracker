@@ -1,4 +1,4 @@
-﻿namespace TaskTracker.Infrastructure.Entities
+﻿namespace TaskTracker.Infrastructures.Entities
 {
     public abstract class BaseEntity
     {

@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using TaskTracker.BLL.Contracts;
-using TaskTracker.DAL.Contracts;
-using TaskTracker.Infrastructure.Entities;
-using TaskTracker.Infrastructure.Filters;
+using TaskTracker.Infrastructures.Contracts;
+using TaskTracker.Infrastructures.Entities;
+using TaskTracker.Infrastructures.Enums;
+using TaskTracker.Infrastructures.Filters;
 
 namespace TaskTracker.BLL.Tests.Tests
 {
@@ -19,7 +20,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             var project2 = new Project()
@@ -28,7 +29,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test2",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             var project3 = new Project()
@@ -37,7 +38,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test3",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             IEnumerable<Project> expected = new List<Project>()
@@ -47,7 +48,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 project3
             };
             IQueryable<Project> Qexpected = expected.AsQueryable();
-      
+
             var loggerMock = new Mock<ILogger<ProjectLogic>>();
 
             var RepositoryMock = new Mock<IRepository<Project>>();
@@ -73,7 +74,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             var project2 = new Project()
@@ -82,7 +83,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test2",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             var project3 = new Project()
@@ -91,7 +92,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test3",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             IEnumerable<Project> expected = new List<Project>()
@@ -133,7 +134,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             var project2 = new Project()
@@ -142,7 +143,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test2",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             var project3 = new Project()
@@ -151,7 +152,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test3",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             IEnumerable<Project> expected = new List<Project>()
@@ -193,7 +194,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now.AddDays(1.0),
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             var project2 = new Project()
@@ -202,7 +203,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test2",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             var project3 = new Project()
@@ -211,7 +212,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test3",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             IEnumerable<Project> expected = new List<Project>()
@@ -253,7 +254,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 1
             };
             var project2 = new Project()
@@ -262,7 +263,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test2",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             var project3 = new Project()
@@ -271,7 +272,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test3",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             IEnumerable<Project> expected = new List<Project>()
@@ -315,7 +316,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             var project2 = new Project()
@@ -324,7 +325,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test2",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             var project3 = new Project()
@@ -333,7 +334,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test3",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             IEnumerable<Project> expected = new List<Project>()
@@ -371,7 +372,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 1
             };
             var project2 = new Project()
@@ -380,7 +381,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test2",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             var project3 = new Project()
@@ -389,7 +390,7 @@ namespace TaskTracker.BLL.Tests.Tests
                 Name = "Test3",
                 StartDate = DateTime.Now,
                 CompletionDate = DateTime.Now,
-                ProjectStatus = Infrastructure.Enums.ProjectStatus.ToDo,
+                ProjectStatus = ProjectStatus.ToDo,
                 Priority = 0
             };
             IEnumerable<Project> expected = new List<Project>()

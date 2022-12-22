@@ -1,6 +1,6 @@
-﻿using TaskTracker.Infrastructure.Enums;
+﻿using TaskTracker.Infrastructures.Enums;
 
-namespace TaskTracker.Infrastructure.Filters
+namespace TaskTracker.Infrastructures.Filters
 {
     public class GetAllProjectsFilter
     {
