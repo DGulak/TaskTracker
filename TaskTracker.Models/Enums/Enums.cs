@@ -7,6 +7,7 @@
         Active = 2,
         Completed = 4
     }
+
     [Flags]
     public enum ProjectStatus
     {

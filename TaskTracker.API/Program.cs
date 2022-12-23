@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 using TaskTracker.BLL;
 using TaskTracker.BLL.Contracts;
 using TaskTracker.DAL.Data;
@@ -32,7 +33,14 @@ internal class Program
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+        builder.Services.AddSwaggerGen(c =>
+        {
+            var xmlDocName = Assembly.GetExecutingAssembly().GetName().Name + ".xml";
+            var xmlDoc = Path.Combine(AppContext.BaseDirectory, xmlDocName);
+
+            c.IncludeXmlComments(xmlDoc);
+        }
+        );
 
         var app = builder.Build();
 
@@ -56,6 +64,8 @@ internal class Program
 
         app.UseSwagger();
         app.UseSwaggerUI();
+
+
 
         app.UseHttpsRedirection();
         app.MapControllers();

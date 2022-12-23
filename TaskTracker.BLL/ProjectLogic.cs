@@ -25,16 +25,16 @@ namespace TaskTracker.BLL
             if (filter?.Name != null)
                 queriable = queriable.Where(p => p.Name == filter.Name);
 
-            if (filter?.StartDate != null && filter?.StartDate != DateTime.MinValue)
+            if (filter?.StartDate != null)
                 queriable = queriable.Where(p => p.StartDate == filter.StartDate);
 
-            if (filter?.CompletionDate != null && filter?.CompletionDate != DateTime.MinValue)
+            if (filter?.CompletionDate != null)
                 queriable = queriable.Where(p => p.CompletionDate == filter.CompletionDate);
 
-            if (filter?.Priority != null && filter?.Priority != -1)
+            if (filter?.Priority != null)
                 queriable = queriable.Where(p => p.Priority == filter.Priority);
 
-            if (filter?.ProjectStatus != null && filter?.ProjectStatus != 0)
+            if (filter?.ProjectStatus != null)
                 queriable = queriable.Where(p => p.ProjectStatus == filter.ProjectStatus);
 
             return queriable;

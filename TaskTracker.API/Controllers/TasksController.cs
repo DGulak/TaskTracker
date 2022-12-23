@@ -22,15 +22,24 @@ namespace TaskTracker.API.Controllers
             _taskLogic = taskLogic;
         }
 
+        /// <summary>
+        /// Returns all tasks
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<TaskDTO>>> GetAll()
+        public async Task<ActionResult<IEnumerable<OutTaskDTO>>> GetAll()
         {
             var tasks = _taskLogic.GetAll();
             return Ok(_mapper.Map<IEnumerable<Infrastructures.Entities.Task>>(tasks));
         }
 
+        /// <summary>
+        /// Returns task by given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult<TaskDTO>> GetById(int id)
+        public async Task<ActionResult<OutTaskDTO>> GetById(int id)
         {
             var task = _taskLogic.GetById(id);
 
@@ -43,8 +52,14 @@ namespace TaskTracker.API.Controllers
             return Ok(_mapper.Map<Infrastructures.Entities.Task>(task));
         }
 
+        /// <summary>
+        /// Update task by given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="taskDTO"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update(int id, TaskDTO taskDTO)
+        public async Task<ActionResult> Update(int id, InTaskDTO taskDTO)
         {
             if (taskDTO == null || id <= 0)
             {
@@ -52,14 +67,19 @@ namespace TaskTracker.API.Controllers
                 return BadRequest();
             }
 
-            taskDTO.Id = id;
-            var post = _mapper.Map<Infrastructures.Entities.Task>(taskDTO);
-            _taskLogic.Update(post);
+            var update = _mapper.Map<Infrastructures.Entities.Task>(taskDTO);
+            update.Id = id;
+            _taskLogic.Update(update);
             return Ok();
         }
 
+        /// <summary>
+        /// Create a new task
+        /// </summary>
+        /// <param name="taskDTO"></param>
+        /// <returns></returns>
         [HttpPost("Create")]
-        public async Task<ActionResult> Create(TaskDTO taskDTO)
+        public async Task<ActionResult> Create(InTaskDTO taskDTO)
         {
             if (taskDTO == null)
             {
@@ -72,6 +92,11 @@ namespace TaskTracker.API.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Delete a task by given id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {

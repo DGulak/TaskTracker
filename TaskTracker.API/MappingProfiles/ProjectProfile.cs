@@ -8,8 +8,8 @@ namespace TaskTracker.API.MappingProfiles
     {
         public ProjectProfile()
         {
-            CreateMap<ProjectDTO, Project>();
-            CreateMap<Project, ProjectDTO>().ReverseMap();
+            CreateMap<InProjectDTO, Project>();
+            CreateMap<Project, OutProjectDTO>().ReverseMap();
         }
     }
 }

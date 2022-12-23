@@ -6,14 +6,14 @@ namespace TaskTracker.API.Contracts.Requests.Queries
     public class GetAllProjectsQuery
     {
         [FromQuery(Name = "startDate")]
-        public DateTime? StartDate { get; set; }
+        public DateTime? StartDate { get; set; } = null;
         [FromQuery(Name = "completionDate")]
-        public DateTime? CompletionDate { get; set; }
+        public DateTime? CompletionDate { get; set; } = null;
         [FromQuery(Name = "name")]
-        public string? Name { get; set; }
+        public string? Name { get; set; } = null;
         [FromQuery(Name = "priority")]
-        public int? Priority { get; set; } = -1;
+        public int? Priority { get; set; } = null;
         [FromQuery(Name = "projectStatus")]
-        public ProjectStatus? ProjectStatus { get; set; }
+        public ProjectStatus? ProjectStatus { get; set; } = null;
     }
 }

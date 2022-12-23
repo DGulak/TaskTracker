@@ -3,7 +3,13 @@ using TaskTracker.Infrastructures.Enums;
 
 namespace TaskTracker.API.DTO
 {
-    public class ProjectDTO
+    /// <summary>
+    /// ProjectStatus:
+    /// 1 - ToDo,
+    /// 2 - InProgress,
+    /// 4 - Done
+    /// </summary>
+    public class OutProjectDTO
     {
         public int Id { get; set; }
 

@@ -7,8 +7,8 @@ namespace TaskTracker.API.MappingProfiles
     {
         public TaskProfile()
         {
-            CreateMap<TaskDTO, Infrastructures.Entities.Task>();
-            CreateMap<Infrastructures.Entities.Task, TaskDTO>().ReverseMap();
+            CreateMap<InTaskDTO, Infrastructures.Entities.Task>();
+            CreateMap<Infrastructures.Entities.Task, OutTaskDTO>().ReverseMap();
         }
     }
 }

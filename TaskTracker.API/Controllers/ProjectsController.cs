@@ -29,8 +29,13 @@ namespace TaskTracker.API.Controllers
             _taskLogic = taskLogic;
         }
 
+        /// <summary>
+        /// Returns all projects
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProjectDTO>>> GetAll([FromQuery] GetAllProjectsQuery? query)
+        public async Task<ActionResult<IEnumerable<OutProjectDTO>>> GetAll([FromQuery] GetAllProjectsQuery? query)
         {
             var filter = _mapper.Map<GetAllProjectsFilter>(query);
 
@@ -43,11 +48,16 @@ namespace TaskTracker.API.Controllers
 
             var projects = _pojectLogic.GetAll(filter);
 
-            return Ok(_mapper.Map<IEnumerable<ProjectDTO>>(projects));
+            return Ok(_mapper.Map<IEnumerable<OutProjectDTO>>(projects));
         }
 
+        /// <summary>
+        /// Return a project for given id 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProjectDTO>> GetById(int id)
+        public async Task<ActionResult<OutProjectDTO>> GetById(int id)
         {
             var project = _pojectLogic.GetById(id);
 
@@ -57,11 +67,16 @@ namespace TaskTracker.API.Controllers
                 return NotFound();
             }
 
-            return Ok(_mapper.Map<ProjectDTO>(project));
+            return Ok(_mapper.Map<OutProjectDTO>(project));
         }
 
+        /// <summary>
+        /// Get all project tasks
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}/Tasks")]
-        public async Task<ActionResult<IEnumerable<TaskDTO>>> GetTasks(int id)
+        public async Task<ActionResult<IEnumerable<OutTaskDTO>>> GetTasks(int id)
         {
             if (id <= 0)
             {
@@ -76,11 +91,17 @@ namespace TaskTracker.API.Controllers
                 return NotFound();
             }
 
-            return Ok(_mapper.Map<IEnumerable<TaskDTO>>(tasks));
+            return Ok(_mapper.Map<IEnumerable<OutTaskDTO>>(tasks));
         }
 
+        /// <summary>
+        /// Update project information by given project id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="projectDTO"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update([FromRoute] int id, ProjectDTO projectDTO)
+        public async Task<ActionResult> Update([FromRoute] int id, InProjectDTO projectDTO)
         {
             if (projectDTO == null || id <= 0)
             {
@@ -88,12 +109,18 @@ namespace TaskTracker.API.Controllers
                 return BadRequest();
             }
 
-            projectDTO.Id = id;
             var post = _mapper.Map<Project>(projectDTO);
+            post.Id = id;
             _pojectLogic.Update(post);
             return Ok();
         }
 
+        /// <summary>
+        /// Assign task to project by its ids
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="taskId"></param>
+        /// <returns></returns>
         [HttpPut("{id}/AssignTask/{taskId}")]
         public async Task<ActionResult> Update([FromRoute] int id, [FromRoute] int taskId)
         {
@@ -108,8 +135,13 @@ namespace TaskTracker.API.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Create a new project
+        /// </summary>
+        /// <param name="projectDTO"></param>
+        /// <returns></returns>
         [HttpPost("Create")]
-        public async Task<ActionResult> Create(ProjectDTO projectDTO)
+        public async Task<ActionResult> Create(InProjectDTO projectDTO)
         {
             if (projectDTO == null)
             {
@@ -140,6 +172,11 @@ namespace TaskTracker.API.Controllers
             return Ok();
         }
 
+        /// <summary>
+        /// Delete project
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {

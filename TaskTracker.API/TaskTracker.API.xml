@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TaskTracker.API</name>
+    </assembly>
+    <members>
+        <member name="M:TaskTracker.API.Controllers.ProjectsController.GetAll(TaskTracker.API.Contracts.Requests.Queries.GetAllProjectsQuery)">
+            <summary>
+            Returns all projects
+            </summary>
+            <param name="query"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskTracker.API.Controllers.ProjectsController.GetById(System.Int32)">
+            <summary>
+            Return a project for given id 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskTracker.API.Controllers.ProjectsController.GetTasks(System.Int32)">
+            <summary>
+            Get all project tasks
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskTracker.API.Controllers.ProjectsController.Update(System.Int32,TaskTracker.API.DTO.InProjectDTO)">
+            <summary>
+            Update project information by given project id
+            </summary>
+            <param name="id"></param>
+            <param name="projectDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskTracker.API.Controllers.ProjectsController.Update(System.Int32,System.Int32)">
+            <summary>
+            Assign task to project by its ids
+            </summary>
+            <param name="id"></param>
+            <param name="taskId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskTracker.API.Controllers.ProjectsController.Create(TaskTracker.API.DTO.InProjectDTO)">
+            <summary>
+            Create a new project
+            </summary>
+            <param name="projectDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskTracker.API.Controllers.ProjectsController.Delete(System.Int32)">
+            <summary>
+            Delete project
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskTracker.API.Controllers.TasksController.GetAll">
+            <summary>
+            Returns all tasks
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TaskTracker.API.Controllers.TasksController.GetById(System.Int32)">
+            <summary>
+            Returns task by given id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskTracker.API.Controllers.TasksController.Update(System.Int32,TaskTracker.API.DTO.InTaskDTO)">
+            <summary>
+            Update task by given id
+            </summary>
+            <param name="id"></param>
+            <param name="taskDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskTracker.API.Controllers.TasksController.Create(TaskTracker.API.DTO.InTaskDTO)">
+            <summary>
+            Create a new task
+            </summary>
+            <param name="taskDTO"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskTracker.API.Controllers.TasksController.Delete(System.Int32)">
+            <summary>
+            Delete a task by given id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:TaskTracker.API.DTO.InProjectDTO">
+            <summary>
+            ProjectStatus:
+            1 - ToDo,
+            2 - InProgress,
+            4 - Done
+            </summary>
+        </member>
+        <member name="T:TaskTracker.API.DTO.InTaskDTO">
+            <summary>
+            TaskStatus:
+            1 - NotStarted,
+            2 - Active,
+            4 - Completed,
+            </summary>
+        </member>
+        <member name="T:TaskTracker.API.DTO.OutProjectDTO">
+            <summary>
+            ProjectStatus:
+            1 - ToDo,
+            2 - InProgress,
+            4 - Done
+            </summary>
+        </member>
+        <member name="T:TaskTracker.API.DTO.OutTaskDTO">
+            <summary>
+            TaskStatus:
+            1 - NotStarted,
+            2 - Active,
+            4 - Completed,
+            </summary>
+        </member>
+    </members>
+</doc>
