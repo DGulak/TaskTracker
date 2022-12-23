@@ -45,6 +45,7 @@ namespace TaskTracker.DAL.Repositories
         {
             _dbContext.Set<TEntity>().Attach(entity);
             _dbContext.Entry(entity).State = EntityState.Modified;
+            _dbContext.SaveChanges();
         }
     }
 }

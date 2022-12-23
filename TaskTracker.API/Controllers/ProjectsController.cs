@@ -116,13 +116,13 @@ namespace TaskTracker.API.Controllers
         }
 
         /// <summary>
-        /// Assign task to project by its ids
+        /// Assign task to project by ids
         /// </summary>
         /// <param name="id"></param>
         /// <param name="taskId"></param>
         /// <returns></returns>
         [HttpPut("{id}/AssignTask/{taskId}")]
-        public async Task<ActionResult> Update([FromRoute] int id, [FromRoute] int taskId)
+        public async Task<ActionResult> AssignTask([FromRoute] int id, [FromRoute] int taskId)
         {
             if (taskId <= 0 || id <= 0)
             {
@@ -130,7 +130,27 @@ namespace TaskTracker.API.Controllers
                 return BadRequest();
             }
 
-            _taskLogic.ReassignTask(id, taskId);
+            _taskLogic.AssignTask(id, taskId);
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Remove task from project by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="taskId"></param>
+        /// <returns></returns>
+        [HttpPut("RemoveTask/{taskId}")]
+        public async Task<ActionResult> RemoveTask([FromRoute] int taskId)
+        {
+            if (taskId <= 0 )
+            {
+                _logger.LogWarning($"taskId was <= 0");
+                return BadRequest();
+            }
+
+            _taskLogic.RemoveTask(taskId);
 
             return Ok();
         }

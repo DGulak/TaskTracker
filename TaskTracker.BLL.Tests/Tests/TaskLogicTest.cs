@@ -66,7 +66,7 @@ namespace TaskTracker.BLL.Tests.Tests
         }
 
         [Fact]
-        public void ReassignTask()
+        public void AssignTask()
         {
             //Arrange
             var project1 = new Project()
@@ -108,7 +108,7 @@ namespace TaskTracker.BLL.Tests.Tests
 
             //Act
             ITaskLogic projectLogic = new TaskLogic(UnitOfWorkMock.Object, loggerMock.Object);
-            projectLogic.ReassignTask(project2.Id, task1.Id);
+            projectLogic.AssignTask(project2.Id, task1.Id);
 
             //Assert
             Assert.Equal(task1.ProjectId, project2.Id);

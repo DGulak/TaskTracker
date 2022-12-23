@@ -33,9 +33,17 @@
             <param name="projectDTO"></param>
             <returns></returns>
         </member>
-        <member name="M:TaskTracker.API.Controllers.ProjectsController.Update(System.Int32,System.Int32)">
+        <member name="M:TaskTracker.API.Controllers.ProjectsController.AssignTask(System.Int32,System.Int32)">
             <summary>
-            Assign task to project by its ids
+            Assign task to project by ids
+            </summary>
+            <param name="id"></param>
+            <param name="taskId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TaskTracker.API.Controllers.ProjectsController.RemoveTask(System.Int32)">
+            <summary>
+            Remove task from project by id
             </summary>
             <param name="id"></param>
             <param name="taskId"></param>

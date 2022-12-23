@@ -15,10 +15,17 @@ namespace TaskTracker.BLL
 
         }
 
-        public void ReassignTask(int newProjectId, int taskId)
+        public void AssignTask(int newProjectId, int taskId)
         {
             var task = _unitOfWork.Repository.GetById(taskId);
             task.ProjectId = newProjectId;
+            _unitOfWork.Repository.Update(task);
+        }
+
+        public void RemoveTask(int taskId)
+        {
+            var task = _unitOfWork.Repository.GetById(taskId);
+            task.ProjectId = 0;
             _unitOfWork.Repository.Update(task);
         }
 

@@ -7,6 +7,7 @@ namespace TaskTracker.BLL.Contracts
     {
         IEnumerable<Infrastructures.Entities.Task> Where(Expression<Func<Infrastructures.Entities.Task, bool>> predicate);
 
-        void ReassignTask(int newProjectId, int taskId);
+        void AssignTask(int newProjectId, int taskId);
+        void RemoveTask(int taskId);
     }
 }
