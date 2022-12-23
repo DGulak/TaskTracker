@@ -10,7 +10,7 @@ TaskTracker is a WEB API that provides:
 
 ## Instalation
 
-1. cd to solution directory. Run  docker compose  up<br>
+1. `cd` to solution directory. Run  `docker compose  up`<br>
    by default swagger will be avaliable on http://localhost:8000/swagger/index.html<br>
    you can change this in docker-compose.yml
    
